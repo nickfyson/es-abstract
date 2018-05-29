@@ -3,6 +3,10 @@
 
 	"extends": "@ljharb",
 
+	"env": {
+		"es6": true,
+	},
+
 	"rules": {
 		"array-bracket-newline": 0,
 		"array-element-newline": 0,
