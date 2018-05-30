@@ -3,6 +3,8 @@
 var bind = require('function-bind');
 var keys = require('object-keys');
 
+var Record = require('./helpers/Record');
+
 var ES2017 = require('./es2017');
 var assign = require('./helpers/assign');
 var forEach = require('./helpers/forEach');
@@ -139,7 +141,41 @@ var ES2018 = assign(assign({}, ES2017), {
 			throw new SyntaxError('This environment does not support Promises.');
 		}
 		return $PromiseResolve(C, x);
-	}
+	},
+
+  // https://ecma-international.org/ecma-262/9.0/#sec-setfunctionlength
+  SetFunctionLength: function SetFunctionLength(F, length) {
+    if (!this.IsExtensible(F)) {
+      throw new TypeError('Assertion failed: F is not extensible');
+    }
+
+    if (this.HasOwnProperty(F, 'length')) {
+      throw new TypeError('Assertion failed: F has a "length" own property');
+    }
+
+    if (this.Type(length) !== 'Number') {
+      throw new TypeError('Assertion failed: "length" is not of Type Number');
+    }
+
+    if (!(length >= 0)) {
+      throw new TypeError('Assertion failed: "length" must be >= 0');
+    }
+
+    if (this.ToInteger(length) !== length) {
+      throw new TypeError('Assertion failed: "length" is not an integer');
+    }
+
+    return this.DefinePropertyOrThrow(
+      F,
+      'length',
+      Record.PropertyDescriptor({
+        '[[Value]]': length,
+        '[[Writable]]': false,
+        '[[Enumerable]]': false,
+        '[[Configurable]]': true
+      })
+    );
+  }
 });
 
 delete ES2018.EnumerableOwnProperties; // replaced with EnumerableOwnPropertyNames
