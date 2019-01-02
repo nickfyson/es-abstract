@@ -53,7 +53,6 @@ var ES6 = {
 	IsGenericDescriptor: require('./2015/IsGenericDescriptor'),
 	IsInteger: require('./2015/IsInteger'),
 	IsPromise: require('./2015/IsPromise'),
-	IsPropertyDescriptor: require('./2015/IsPropertyDescriptor'),
 	IsPropertyKey: require('./2015/IsPropertyKey'),
 	IsRegExp: require('./2015/IsRegExp'),
 	IteratorClose: require('./2015/IteratorClose'),
