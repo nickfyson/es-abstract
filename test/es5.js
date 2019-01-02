@@ -197,35 +197,6 @@ test('Type', function (t) {
 	t.end();
 });
 
-test('IsPropertyDescriptor', function (t) {
-	forEach(v.primitives, function (primitive) {
-		t.equal(ES.IsPropertyDescriptor(primitive), false, debug(primitive) + ' is not a Property Descriptor');
-	});
-
-	t.equal(ES.IsPropertyDescriptor({ invalid: true }), false, 'invalid keys not allowed on a Property Descriptor');
-
-	t.equal(ES.IsPropertyDescriptor({}), true, 'empty object is an incomplete Property Descriptor');
-
-	t.equal(ES.IsPropertyDescriptor(v.accessorDescriptor()), true, 'accessor descriptor is a Property Descriptor');
-	t.equal(ES.IsPropertyDescriptor(v.mutatorDescriptor()), true, 'mutator descriptor is a Property Descriptor');
-	t.equal(ES.IsPropertyDescriptor(v.dataDescriptor()), true, 'data descriptor is a Property Descriptor');
-	t.equal(ES.IsPropertyDescriptor(v.genericDescriptor()), true, 'generic descriptor is a Property Descriptor');
-
-	t['throws'](
-		function () { ES.IsPropertyDescriptor(v.bothDescriptor()); },
-		TypeError,
-		'a Property Descriptor can not be both a Data and an Accessor Descriptor'
-	);
-
-	t['throws'](
-		function () { ES.IsPropertyDescriptor(v.bothDescriptorWritable()); },
-		TypeError,
-		'a Property Descriptor can not be both a Data and an Accessor Descriptor'
-	);
-
-	t.end();
-});
-
 test('IsAccessorDescriptor', function (t) {
 	forEach(v.nonNullPrimitives.concat(null), function (primitive) {
 		t['throws'](function () { ES.IsAccessorDescriptor(primitive); }, TypeError, debug(primitive) + ' is not a Property Descriptor');
