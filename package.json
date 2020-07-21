@@ -67,6 +67,7 @@
 		"array.prototype.indexof": "^1.0.0",
 		"aud": "^1.1.2",
 		"cheerio": "^1.0.0-rc.3",
+		"collapsed-assert": "^1.1.0",
 		"diff": "^4.0.2",
 		"eclint": "^2.8.1",
 		"eslint": "^7.5.0",

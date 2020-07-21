@@ -1,6 +1,7 @@
 'use strict';
 
 var test = require('tape');
+var CollapsedAssert = require('collapsed-assert');
 
 var forEach = require('foreach');
 var is = require('object-is');
@@ -21,6 +22,14 @@ var getOwnPropertyDescriptor = require('../helpers/getOwnPropertyDescriptor');
 var assertRecordTests = require('./helpers/assertRecord');
 var v = require('./helpers/values');
 var diffOps = require('./diffOps');
+
+function forEachAssert(t, items, msg, callback) {
+	var c = new CollapsedAssert();
+	forEach(items, function (item) {
+		callback(c, item);
+	});
+	c.report(t, msg);
+}
 
 var MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1;
 
@@ -79,8 +88,8 @@ var kludgeMatch = function kludgeMatch(R, matchObject) {
 };
 
 var testEnumerableOwnNames = function (t, enumerableOwnNames) {
-	forEach(v.primitives, function (nonObject) {
-		t['throws'](
+	forEachAssert(t, v.primitives, 'primitives', function (c, nonObject) {
+		c['throws'](
 			function () { enumerableOwnNames(nonObject); },
 			debug(nonObject) + ' is not an Object'
 		);
