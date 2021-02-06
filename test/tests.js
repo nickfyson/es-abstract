@@ -4442,6 +4442,7 @@ var es2017 = function ES2017(ES, ops, expectedMissing, skips) {
 	}));
 	var test = makeTest(skips);
 
+	// TODO: RawBytesToNumber tests
 	test('EnumerableOwnProperties', function (t) {
 		var obj = testEnumerableOwnNames(t, function (O) {
 			return ES.EnumerableOwnProperties(O, 'key');
@@ -5169,6 +5170,7 @@ var es2020 = function ES2020(ES, ops, expectedMissing, skips) {
 		GetIterator: true,
 		NumberToString: true,
 		ObjectCreate: true,
+		RawBytesToNumber: true,
 		SameValueNonNumber: true,
 		ToInteger: true,
 		UTF16Decode: true

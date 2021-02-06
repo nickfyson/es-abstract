@@ -84,6 +84,7 @@ var ES2019 = {
 	OrdinarySetPrototypeOf: require('./2019/OrdinarySetPrototypeOf'),
 	PromiseResolve: require('./2019/PromiseResolve'),
 	QuoteJSONString: require('./2019/QuoteJSONString'),
+	RawBytesToNumber: require('./2019/RawBytesToNumber'),
 	RegExpCreate: require('./2019/RegExpCreate'),
 	RegExpExec: require('./2019/RegExpExec'),
 	RequireObjectCoercible: require('./2019/RequireObjectCoercible'),

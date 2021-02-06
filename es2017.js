@@ -78,6 +78,7 @@ var ES2017 = {
 	OrdinaryHasProperty: require('./2017/OrdinaryHasProperty'),
 	OrdinarySetPrototypeOf: require('./2017/OrdinarySetPrototypeOf'),
 	QuoteJSONString: require('./2017/QuoteJSONString'),
+	RawBytesToNumber: require('./2017/RawBytesToNumber'),
 	RegExpCreate: require('./2017/RegExpCreate'),
 	RegExpExec: require('./2017/RegExpExec'),
 	RequireObjectCoercible: require('./2017/RequireObjectCoercible'),
